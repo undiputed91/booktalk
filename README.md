@@ -132,7 +132,7 @@
 </details>
 
 <details>
-  <summary>프런트 배포 방식 - 타임리프 & Ajaxs</summary>
+  <summary>유저 인증방식</summary>
  
 * jwt
   * 사용자의 로그인 상태정보를 클라이언트에 저장하기 때문에 서버의 부담감소
