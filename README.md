@@ -1,31 +1,11 @@
 # BookTalkBang
 [서비스 링크](https://woogin.shop/booktalk)
 
-## 프로젝트 소개
-> 책과 관련해 중고거래가 메인인 사이트로 서로 책에 대해 추천하거나 이야기를 나눌 수 있는 서비스
+## 프로젝트 개요
+### 프로젝트 소개
+> 책과 관련해 중고거래가 메인인 사이트로 서로 책에 대해 추천하거나 이야기를 나눌 수 있는 서비스(팀 프로젝트)
 
-## 팀 구성원 및 역할 분담
-> 리더 이준영, 부리더 신승호, 팀원 김건우, 팀원 배형태
-
-* 이준영
-  * 채팅,알림,CI/CD 배포, 상품, 카테고리,캐싱
-* 신승호
-  * 회원가입, 로그인, 소셜로그인, 회원프로필,
-* 김건우
-  * 이미지 업로드,회원 차단, 상품 좋아요
-* 배형태
-  * 리뷰 게시글, 댓글, 좋아요, 회원 평점, 신고
-* 공통사항
-  * 프런트, 테스트코드 작성, 도커 실습
-
-## 서비스 아키텍쳐
-![Untitled](https://github.com/junyeong237/booktalk/assets/145661542/6e0342c6-add0-4271-b553-eb9d82604c73)
-
-## ERD
-![B08](https://github.com/junyeong237/booktalk/assets/145661542/53997058-e978-4099-acf4-def3a1ca24b4)
-
-
-## 주요 기능
+### 주요 기능
 * 중고 거래 상품 등록
 * 외부 상품과의 가격 비교 기능
 * 거래를 위한 채팅기능
@@ -34,24 +14,40 @@
 * 회원 신고기능
 * 백오피스 관리자 기능
 
+### 개인 역할
+
+* 부팀장
+  * 스프링 시큐리티를 사용한 회원가입 로그인 구현
+  * Oauth 2.0을 통해 카카오 소셜 로그인 구현
+  * JPA ORM을 통해 유저 프로필 관리
+  * 회원가입 로그인 프로필 CRUD 테스트코드 작성
+  * JWT를 통한 인증방식
+  * Redis로 RefreshToken을 관리하여 JWT보완
+  * 게시판 및 댓글 도메인 프론트엔드
+
+### 팀 프로젝트 기간 및 소속
+
+내일배움캠프 부트캠프 8조 소속
+<br>
+2024.01~2024.02 (5주)
+
+### 팀 프로젝트 Repo/Notion URL
+[팀 프로젝트 Repo](https://github.com/junyeong237/booktalk)
+<br>
+[팀 프로젝트 Notion](https://www.notion.so/teamsparta/Book-3e585aeb94e0478cbf8285718775849b)
+
 ## 사용 기술 스택
 <details>
   <summary>BackEnd</summary>
- 
 * Java 17
 * Spring boot 3.2.1
 * Spring security 6.2.1
 * JWT 0.11.5
 * gradle 8.5
-* QueryDSL 5.0.0
 * spring data jpa 3.2.1
 * spring data redis 3.2.1
-* WebSocket 3.2.1
-* STOMP
-* KAKAO Open API
 * Oauth 2.0
 * junit5 5.10.1
-* SSE
   
 </details>
 
@@ -72,28 +68,25 @@
  
 * MySQL 8.2.0
 * Redis
-* h2 2.2.224
   
 </details>
 
-<details>
-  <summary>infra</summary>
- 
-* AWS
-  * EC2
-  * S3
-  * RDS
-  * CodeDeploy
-* GitHub Actions
-  
-</details>
+## 프로젝트 진행 단계
+1주차 : 백엔드 구현
+2주차 : 프론트엔드 구현
+3주차 : 오류 수정
+4주차 : 유저 배포 및 피드백 반영
+5주차 : 피드백 반영
 
-<details>
-  <summary>Docs</summary>
- 
-* Jmeter 5.6.3
+## 프로젝트 세부 과정
 
-</details>
+## 프로젝트 회고
+잘한 점 : 
+<br>
+한계점 :
+<br>
+개선사항 :
+<br>
 
 ## 기술적 의사결정
 
