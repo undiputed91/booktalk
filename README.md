@@ -36,7 +36,7 @@
 <br>
 [팀 프로젝트 Notion](https://www.notion.so/teamsparta/Book-3e585aeb94e0478cbf8285718775849b)
 
-## 사용 기술 스택
+## 사용 기술 스택(개인)
 <details>
   <summary>BackEnd</summary>
  
@@ -80,43 +80,12 @@
 * 4주차 : 유저 배포 및 피드백 반영
 * 5주차 : 피드백 반영
 
-## 프로젝트 세부 과정
-
 ## 프로젝트 회고
-잘한 점 : 
-<br>
-한계점 : 서버 종료 시 인메모리DB인 Redis 데이터 초기화 발생 - 기존 유저가 지닌 토큰과 redis의 초기화된 
-<br>
-개선사항 :
-<br>
+* 잘한 점 : 새로운 기능 구현, 팀원과 원할한 의사소통
+* 한계점 : 서버 종료 시 인메모리DB인 Redis 데이터 초기화 발생 -> 기존 유저가 지닌 토큰과 redis의 초기화된 토큰 정보가 일치하지 않아 접근이 제한되는 상황에 대처를 못함
+* 개선사항 : Redis의 RDB/AOF를 통해 영속성을 설정하여 데이터 백업으로 해결 예상됨
 
 ## 기술적 의사결정
-
-<details>
-  <summary>Repsitory의존 + default Method 사용</summary>
- 
-* 다른 서비스 도메인에서 다른 서비스를 호출하는 방식보단 레포지토리에 의존하는 방식 선택
-* 이 경우 중복 메서드를 매번 작성해줘야하지만 이를 방지하기 위해 레포지토리단에서 디폴트 메서드를 사용해 중복성 제거
-  
-</details>
-
-<details>
-  <summary>WebSocket&Stomp 사용</summary>
- 
-* 채팅시스템을 위해선 클라이언트와 서버간의 양방향 통신을 제공받아야함
-* 따라서 Http 통신과 다르게 연결을 맺고 바로 끊어버리는게 아닌 계속 유지할 수 있는WebSocket선택
-* STOMP는 웹소켓과 함께 사용되는 메시징 프로토콜로 WebSocket만 사용했을때 일일히 handler를 수동작성해줘야했던것과 달리 STOMP를 웹소켓과 같이 사용하여 비교적 쉬운 초기설정과 관리가 가능한 pub/sub구조의 체계적인 응답형식을 가지고있다.
-  
-</details>
-
-<details>
-  <summary>Redis Cache 효율성 문제</summary>
- 
-* 같은 쿼리문이 쓸데없는 반복되는것을 피하기 위해 캐싱 사용
-* 하지만 redis에 데이터가 쌓이는것 자체가 메모리 낭비로 이어질 수 있는 가능성이 있음
-* 따라서 적절한 trade-off를 고려하여 레디스 캐싱의 시간을 줄이고 쿼리문 최적화가 필수적
-  
-</details>
 
 <details>
   <summary>프런트 배포 방식 - 타임리프 & Ajaxs</summary>
