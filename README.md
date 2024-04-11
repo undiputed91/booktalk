@@ -88,6 +88,29 @@
 ### ERD
 ![B08](https://github.com/junyeong237/booktalk/assets/145661542/53997058-e978-4099-acf4-def3a1ca24b4)
 
+### 담당 부분 설명
+<img width="629" alt="스크린샷 2024-04-11 오후 7 19 37" src="https://github.com/undiputed91/booktalk/assets/145661542/8256606b-45c2-4401-80db-175323e5217c">
+<br>
+사용자는 회원가입 로그인 소셜로그인(카카오)가 가능하며 spring security를 통해 인증과 인가가 이루어집니다.
+<img width="680" alt="스크린샷 2024-04-11 오후 7 15 15" src="https://github.com/undiputed91/booktalk/assets/145661542/510556b2-50b1-49ac-b211-4ad1cfe9e7c0">
+<br>
+(spring security사용을 위한 webconfig 일부)
+<img width="903" alt="스크린샷 2024-04-11 오후 7 23 19" src="https://github.com/undiputed91/booktalk/assets/145661542/963730cb-312a-4d4e-b66a-da69c1d5a5f4">
+<br>
+로그인에 성공하면 클라이언트 브라우저의 쿠키에 accessToken과 refreshToken이 담깁니다.
+<img width="570" alt="스크린샷 2024-04-11 오후 7 22 20" src="https://github.com/undiputed91/booktalk/assets/145661542/11cbaf8f-8478-4699-84f3-6858d64e96ce">
+<br>
+redis에 해당 로그인한 유저의 토큰이 저장되는 것을 확인할 수 있습니다.
+refreshToken의 유효기간은 14일로 설정하였으며 redis의 TTL 또한 동일하게 14일로 설정하여 관리가 용이하도록 설정하였습니다.
+<img width="764" alt="스크린샷 2024-04-11 오후 7 33 51" src="https://github.com/undiputed91/booktalk/assets/145661542/addcff2c-96a2-4ad5-8b01-193066a979f5">
+<br>
+로그아웃의 경우 spring security의 로그아웃 기능을 활용하여 쿠키에 담긴 토큰이 삭제되는 형태로 구현하였습니다.
+<img width="1210" alt="스크린샷 2024-04-11 오후 7 31 54" src="https://github.com/undiputed91/booktalk/assets/145661542/f5f8a364-7a83-4c0f-be63-5f1f34fa4ffb">
+회원정보는 JPA ORM을 통해 CRUD가 가능하며 회원탈퇴의 경우 Delete가 아닌 boolean타입의 true 값으로 soft-delete의 형태를 구현하였습니다. <br>
+본 프로젝트에서는 구현하지 않았지만 추후 회원재가입할 시 데이터 복구를 예방하며 <br>
+cascade 속성설정에 따른 고아 entity 삭제시 의사소통이 매끄러워보이지 않는 문제점을 해결할 수 있기 때문입니다. <br>
+
+
 ### 기술적 의사결정
 
 <details>
@@ -117,7 +140,10 @@
 
 ## 프로젝트 회고
 * 잘한 점 : 새로운 기능 구현, 팀원과 원할한 의사소통
-* 한계점 : 서버 종료 시 인메모리DB인 Redis 데이터 초기화 발생 -> 기존 유저가 지닌 토큰과 redis의 초기화된 토큰 정보가 일치하지 않아 접근이 제한되는 상황에 대처를 못함
-* 개선사항 : Redis의 RDB/AOF를 통해 영속성을 설정하여 데이터 백업으로 해결 예상됨
-
+* 한계점
+  * 서버 종료 시 인메모리DB인 Redis 데이터 초기화 발생 -> 기존 유저가 지닌 토큰과 redis의 초기화된 토큰 정보가 일치하지 않아 접근이 제한되는 상황에 대처를 못함
+  * 소셜로그인 구현에 사용한 restTemplate이 deprecated될 예정이 있다
+* 개선사항
+  * Redis의 RDB/AOF를 통해 영속성을 설정하여 데이터 백업으로 해결 예상됨
+  * restTemplate을 webClient로 대체 필요
 
