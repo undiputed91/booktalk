@@ -108,7 +108,7 @@ refreshToken의 유효기간은 14일로 설정하였으며 redis의 TTL 또한 
 <img width="1210" alt="스크린샷 2024-04-11 오후 7 31 54" src="https://github.com/undiputed91/booktalk/assets/145661542/f5f8a364-7a83-4c0f-be63-5f1f34fa4ffb">
 회원정보는 JPA ORM을 통해 CRUD가 가능하며 회원탈퇴의 경우 Delete가 아닌 boolean타입의 true 값으로 soft-delete의 형태를 구현하였습니다. <br>
 본 프로젝트에서는 구현하지 않았지만 추후 회원재가입할 시 데이터 복구를 예방하며 <br>
-cascade 속성설정에 따른 고아 entity 삭제시 의사소통이 매끄러워보이지 않는 문제점을 해결할 수 있기 때문입니다. <br>
+cascade 속성설정에 따른 고아 entity 삭제시 해당 유저가 작성한 게시글 및 댓글이 함께 삭제되어 의사소통이 매끄러워보이지 않는 문제점을 해결할 수 있기 때문입니다. <br>
 
 
 ### 기술적 의사결정
